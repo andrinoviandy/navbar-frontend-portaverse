@@ -1,18 +1,18 @@
-// function isDevelopmentEnvironment(): boolean {
-//   return import.meta.env.DEV;
-// }
+function isDevelopmentEnvironment(): boolean {
+  return import.meta.env.DEV;
+}
 
-// function generateEnvKey(url: string): string {
-//   return url.split('/')[2].toUpperCase().replace(/-/g, '_');
-// }
+function generateEnvKey(url: string): string {
+  return url.split('/')[2].toUpperCase().replace(/-/g, '_');
+}
 
 function getEnvironmentURL(url: string): string {
-  // if (isDevelopmentEnvironment()) {
-  return url;
-  // }
+  if (isDevelopmentEnvironment()) {
+    return url;
+  }
 
-  // const envKey = generateEnvKey(url);
-  // return import.meta.env[`VITE_API_${envKey}_SERVICE_URL`] as string;
+  const envKey = generateEnvKey(url);
+  return import.meta.env[`VITE_API_${envKey}_SERVICE_URL`] as string;
 }
 
 /**
