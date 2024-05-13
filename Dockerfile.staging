@@ -1,0 +1,26 @@
+FROM node:20.13-alpine AS builder
+WORKDIR /app
+COPY pnpm-lock.yaml package.json ./
+RUN npm i -g pnpm@9.0.6
+RUN npm i -g vite@5.2.0
+RUN pnpm i
+COPY . .
+
+ENV VITE_API_AUTH_SERVICE_URL=https://user-auth.portaverse.co.id
+ENV VITE_API_SOCIAL_SERVICE_URL=https://social.portaverse.co.id
+ENV VITE_API_NOTIFICATIONS_SERVICE_URL=https://notification.portaverse.co.id
+ENV VITE_API_COURSE_SERVICE_URL=https://course.portaverse.co.id
+ENV VITE_API_SEARCH_ENGINE_SERVICE_URL=https://search-engine.portaverse.co.id
+ENV VITE_SSO_URL=https://sso.portaverse.co.id
+ENV VITE_KMS_URL=https://knowledge.portaverse.co.id
+ENV VITE_LMS_URL=https://learning.portaverse.co.id
+ENV VITE_TMS_URL=https://talent.portaverse.co.id
+ENV VITE_MEET_URL=https://meet.portaverse.co.id
+
+RUN pnpm build
+
+FROM nginx:stable-alpine AS server
+COPY ./etc/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder ./app/dist /usr/share/nginx/html
+EXPOSE 5001
+CMD ["nginx", "-g", "daemon off;"]
