@@ -4,17 +4,7 @@ export const userCookieSchema = z.object({
   user_id: z.number(),
   uid: z.string(),
   email: z.string().email(),
-  role_code: z.array(
-    z.union([
-      z.literal('SA'),
-      z.literal('USER'),
-      z.literal('CRPU'),
-      z.literal('SME'),
-      z.literal('VNDR'),
-      z.literal('SBCN'),
-      z.null(),
-    ])
-  ),
+  role_code: z.array(z.union([z.string(), z.null()])),
   group_corpu_admin: z.array(
     z.object({
       wallet_group_corpu_id: z.number(),
