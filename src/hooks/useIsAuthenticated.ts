@@ -1,10 +1,9 @@
 import { userCookieSchema } from '@services/schema/userCookieSchema';
 import Cookie from 'js-cookie';
-import getUserCookie from '@utils/cookie';
 
 /**
  * Responsible for checking if the user is authenticated.
-*/
+ */
 
 export default function useIsAuthenticated(): boolean {
   const userCookie = Cookie.get('user');
