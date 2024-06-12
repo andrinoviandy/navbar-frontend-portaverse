@@ -1,5 +1,4 @@
-import { userCookieSchema } from '@services/schema/userCookieSchema';
-import Cookie from 'js-cookie';
+import getUserCookie from '@utils/cookie';
 
 /**
  * Responsible for checking if the user is authenticated.
@@ -7,18 +6,16 @@ import Cookie from 'js-cookie';
  */
 
 export default function useIsAuthenticated(): boolean {
-  const userCookie = Cookie.get('user');
+  const userCookie = getUserCookie();
 
   if (!userCookie) {
     return false;
   }
 
-  const user = JSON.parse(userCookie.replace(/^j:/, ''));
-
-  const validatedUser = userCookieSchema.safeParse(user);
+  // const validatedUser = userCookieSchema.safeParse(user);
 
   return (
-    validatedUser.success &&
-    validatedUser.data.expire_token >= Number(new Date()) / 1000
+    // validatedUser.success &&
+    userCookie.expire_token >= Number(new Date()) / 1000
   );
 }
