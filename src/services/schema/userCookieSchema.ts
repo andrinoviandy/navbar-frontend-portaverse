@@ -5,44 +5,51 @@ export const userCookieSchema = z.object({
   uid: z.string(),
   email: z.string().email(),
   role_code: z.array(z.union([z.string(), z.null()])),
-  group_corpu_admin: z.array(
-    z.object({
-      wallet_group_corpu_id: z.number(),
-      name: z.string(),
-      employee_id: z.number(),
-    })
-  ),
+  group_corpu_admin: z
+    .array(
+      z.object({
+        wallet_group_corpu_id: z.number().nullable(),
+        name: z.string().nullable(),
+        employee_id: z.number(),
+      })
+    )
+    .optional(),
   employee: z.object({
     employee_id: z.number(),
-    employee_number: z.string(),
+    employee_number: z.string().optional(),
     is_official_account: z.boolean(),
     name: z.string(),
-    group: z.object({
-      group_id: z.number(),
-      name: z.string(),
-    }),
-    profile_picture: z.string().url(),
-    social_employee_profile: z.object({
-      social_employee_profile_id: z.number(),
-    }),
-    position_name: z.string(),
+    group: z
+      .object({
+        group_id: z.number().optional(),
+        name: z.string().optional(),
+      })
+      .optional(),
+    group_master: z.object({}).optional(),
+    profile_picture: z.string().url().optional(),
+    social_employee_profile: z
+      .object({
+        social_employee_profile_id: z.number().optional(),
+      })
+      .optional(),
+    position_name: z.string().optional(),
   }),
   is_first_time_login: z.boolean(),
   expire_token: z.number(),
   vendor: z
     .object({
-      vendor_member_id: z.number(),
-      vendor_id: z.number(),
-      photo_profile: z.string(),
-      name: z.string(),
+      vendor_member_id: z.number().optional(),
+      vendor_id: z.number().optional(),
+      photo_profile: z.string().optional(),
+      name: z.string().optional(),
     })
     .optional(),
   subcon: z
     .object({
-      subcon_member_id: z.number(),
-      subcon_id: z.number(),
-      photo_profile: z.string(),
-      name: z.string(),
+      subcon_member_id: z.number().optional(),
+      subcon_id: z.number().optional(),
+      photo_profile: z.string().optional(),
+      name: z.string().optional(),
     })
     .optional(),
 });
