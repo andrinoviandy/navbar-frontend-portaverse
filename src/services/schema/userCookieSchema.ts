@@ -17,8 +17,8 @@ export const userCookieSchema = z.object({
   employee: z.object({
     employee_id: z.number(),
     employee_number: z.string().optional(),
-    is_official_account: z.boolean(),
-    name: z.string(),
+    is_official_account: z.boolean().optional(),
+    name: z.union([z.string(), z.null()]).optional(),
     group: z
       .object({
         group_id: z.number().optional(),
