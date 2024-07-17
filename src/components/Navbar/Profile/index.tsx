@@ -33,7 +33,7 @@ function Profile() {
           <Avatar
             // src="https://project-kms-s3-sg.s3.ap-southeast-1.amazonaws.com/files/1b265674fb7987648d4d38f9f8225a6f?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAYUAFN2WMWC7Y32K3%2F20240327%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T023002Z&X-Amz-Expires=900&X-Amz-Signature=16dc0e8fef66e9ae691af9caffe3f0f8afa5dc84b92d07b8ae2887b7bb59ccb1&X-Amz-SignedHeaders=host"
             src={profile_picture as string}
-            alt={name}
+            alt={name || ''}
             size={28}
           >
             {initials}
@@ -47,7 +47,7 @@ function Profile() {
       </Popover.Target>
 
       <ProfileDropdown
-        name={name}
+        name={name || ''}
         position_name={position_name}
         employee_number={employee_number}
         profile_picture={profile_picture}
