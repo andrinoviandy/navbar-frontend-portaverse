@@ -312,6 +312,48 @@ const notifURLLookup = (
       ),
       action: 'redirect',
     },
+    CCMM_MEMBER_LIMIT_CHANGE_AGENT: {
+      payload: createPlatformHref(
+        'CMS',
+        `/change-catalyst-member-management`
+      ),
+      action: 'redirect',
+    },
+    CCMM_MEMBER_LIMIT_CHANGE_CHAMPION: {
+      payload: createPlatformHref(
+        'CMS',
+        `/change-catalyst-member-management`
+      ),
+      action: 'redirect',
+    },
+    CCMM_MEMBER_LIMIT_AGENT_LESS: {
+      payload: createPlatformHref(
+        'CMS',
+        `/change-catalyst-member-management?main_tab=member-setting&list_tab=CHANGE_AGENT`
+      ),
+      action: 'redirect',
+    },
+    CCMM_MEMBER_LIMIT_AGENT_MORE: {
+      payload: createPlatformHref(
+        'CMS',
+        `/change-catalyst-member-management?main_tab=member-setting&list_tab=CHANGE_AGENT`
+      ),
+      action: 'redirect',
+    },
+    CCMM_MEMBER_LIMIT_CHAMPION_LESS: {
+      payload: createPlatformHref(
+        'CMS',
+        `/change-catalyst-member-management?main_tab=member-setting&list_tab=CHANGE_CHAMPION`
+      ),
+      action: 'redirect',
+    },
+    CCMM_MEMBER_LIMIT_CHAMPION_MORE: {
+      payload: createPlatformHref(
+        'CMS',
+        `/change-catalyst-member-management?main_tab=member-setting&list_tab=CHANGE_CHAMPION`
+      ),
+      action: 'redirect',
+    },
   };
 
   const { payload, action, modalId, modalProps } =

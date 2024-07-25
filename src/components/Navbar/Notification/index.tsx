@@ -52,6 +52,9 @@ function Notification() {
     if ((data as SocketResponse)?.message?.origin === 'TMS') {
       increaseUnread(1, 'tms');
     }
+    if ((data as SocketResponse)?.message?.origin === 'TMS') {
+      increaseUnread(1, 'cms');
+    }
   }, [data, increaseUnread]);
 
   const view = (v = 0, isAbsolute = true) => {
@@ -94,6 +97,7 @@ function Notification() {
         setUnread({
           kms: res?.data?.kms || 0,
           tms: res?.data?.tms || 0,
+          cms: res?.data?.cms || 0,
           lms: res?.data?.lms || 0,
           all: res?.data?.all || 0,
         });
@@ -179,6 +183,18 @@ function Notification() {
                 TMS {view(unread?.tms, false)}
               </div>
             </Tabs.Tab>
+            <Tabs.Tab value="cms">
+              <div
+                className={`flex items-center gap-2 ${
+                  activeTab !== 'cms'
+                    ? 'text-base-darkGray'
+                    : 'text-[#016DB2]'
+                }`}
+              >
+                {' '}
+                CMS {view(unread?.cms, false)}
+              </div>
+            </Tabs.Tab>
           </Tabs.List>
           <Tabs.Panel value="all">
             <NotificationSection
@@ -201,6 +217,12 @@ function Notification() {
           <Tabs.Panel value="tms">
             <NotificationSection
               origin="tms"
+              tab={activeTab as string}
+            />
+          </Tabs.Panel>
+          <Tabs.Panel value="cms">
+            <NotificationSection
+              origin="cms"
               tab={activeTab as string}
             />
           </Tabs.Panel>
