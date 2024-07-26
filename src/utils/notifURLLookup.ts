@@ -18,7 +18,7 @@ const notifURLLookup = (
 ) => {
   const user = getUserCookie();
   const vendorId = user?.vendor?.vendor_id;
-  const { bast_course_id } = notifData;
+  const { bast_course_id, x, z } = notifData;
 
   const lookupObj: {
     [key: string]: {
@@ -351,6 +351,20 @@ const notifURLLookup = (
       payload: createPlatformHref(
         'CMS',
         `/change-catalyst-member-management?main_tab=member-setting&list_tab=CHANGE_CHAMPION`
+      ),
+      action: 'redirect',
+    },
+    CCMM_MEMBER_TOTAL_MUTATION: {
+      payload: createPlatformHref(
+        'CMS',
+        `/change-catalyst-member-management?main_tab=member-setting&list_tab=PROMOTION`
+      ),
+      action: 'redirect',
+    },
+    CCMM_MEMBER_GET_MUTATION: {
+      payload: createPlatformHref(
+        'CMS',
+        `/change-catalyst-member-management?main_tab=member-setting&list_tab=${z}&search_member=${x}`
       ),
       action: 'redirect',
     },
