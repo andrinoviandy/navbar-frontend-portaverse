@@ -23,6 +23,8 @@ export type NotifItem = {
   reminder_at: number;
   data: NotifItemData;
   x: unknown;
+  y: unknown;
+  z: unknown;
   pinnedAt: string;
   title: string;
   acceptance_status: boolean | null;
