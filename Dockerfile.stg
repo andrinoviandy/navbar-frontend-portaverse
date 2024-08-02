@@ -6,16 +6,19 @@ RUN npm i -g vite@5.2.0
 RUN pnpm i
 COPY . .
 
-ENV VITE_API_AUTH_SERVICE_URL=https://staging-user-auth.portaverse.co.id
-ENV VITE_API_SOCIAL_SERVICE_URL=https://staging-social.portaverse.co.id
-ENV VITE_API_NOTIFICATIONS_SERVICE_URL=https://staging-notification.portaverse.co.id
-ENV VITE_API_COURSE_SERVICE_URL=https://staging-course.portaverse.co.id
-ENV VITE_API_SEARCH_ENGINE_SERVICE_URL=https://staging-search-engine.portaverse.co.id
-ENV VITE_SSO_URL=https://staging-sso.portaverse.co.id
-ENV VITE_KMS_URL=https://staging-knowledge.portaverse.co.id
-ENV VITE_LMS_URL=https://staging-learning.portaverse.co.id
-ENV VITE_TMS_URL=https://staging-talent.portaverse.co.id
-ENV VITE_MEET_URL=https://staging-meet.portaverse.co.id
+ENV VITE_API_AUTH_SERVICE_URL=https://user-auth-qa-portaverse-staging.ilcs.co.id
+ENV VITE_API_SOCIAL_SERVICE_URL=https://social-qa-portaverse-staging.ilcs.co.id
+ENV VITE_API_NOTIFICATIONS_SERVICE_URL=https://notification-qa-portaverse-staging.ilcs.co.id
+ENV VITE_API_COURSE_SERVICE_URL=https://course-qa-portaverse-staging.ilcs.co.id
+ENV VITE_API_SEARCH_ENGINE_SERVICE_URL=https://search-engine-qa-portaverse-staging.ilcs.co.id
+ENV VITE_SSO_URL=https://sso-qa-portaverse-staging.ilcs.co.id
+ENV VITE_KMS_URL=https://knowledge-qa-portaverse-staging.ilcs.co.id
+ENV VITE_LMS_URL=https://learning-qa-portaverse-staging.ilcs.co.id
+ENV VITE_TMS_URL=https://talent-qa-portaverse-staging.ilcs.co.id
+ENV VITE_IMS_URL=https://ims-qa-portaverse-staging.ilcs.co.id
+ENV VITE_CMS_URL=https://cms-qa-portaverse-staging.ilcs.co.id
+ENV VITE_MEET_URL=https://meet-qa-portaverse-staging.ilcs.co.id
+ENV VITE_NAVBAR_URL=https://navbar-qa-portaverse-staging.ilcs.co.id/assets/remoteEntry.js
 
 RUN pnpm build
 
