@@ -19,7 +19,7 @@ const PLATFORM_MENU: PlatformMenuProps[] = [
   },
   {
     title: 'CMS',
-    content: '',
+    content: 'Kelola program-program pengembangan budaya',
     route: import.meta.env.VITE_CMS_URL || '',
   },
   {
