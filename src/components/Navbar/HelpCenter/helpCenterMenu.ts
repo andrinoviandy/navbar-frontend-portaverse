@@ -7,7 +7,7 @@ const HELP_CENTER_MENU: HelpCenterMenuProps[] = [
       'Akses portaverse FAQ portal untuk lebih lanjut terkait fitur Portaverse',
     icon: 'fluent:chat-bubbles-question-16-filled',
     route:
-      'https://portaverse.atlassian.net/servicedesk/customer/portal/3',
+      'http://docs-portaverse.pelindo.co.id',
   },
   {
     title: 'Portaverse IT Management',
