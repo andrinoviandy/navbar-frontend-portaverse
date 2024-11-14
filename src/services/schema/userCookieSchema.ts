@@ -13,45 +13,45 @@ export const userCookieSchema = z.object({
         employee_id: z.number().nullish(),
       })
     )
-    .nullish(),
+    .optional(),
   employee: z.object({
-    employee_id: z.number().nullish(),
-    employee_number: z.string().nullish(),
-    is_official_account: z.boolean().nullish(),
-    name: z.union([z.string(), z.null()]).nullish(),
+    employee_id: z.number(),
+    employee_number: z.string().optional(),
+    is_official_account: z.boolean().optional(),
+    name: z.union([z.string(), z.null()]).optional(),
     group: z
       .object({
         group_id: z.number().nullish(),
         name: z.string().nullish(),
       })
-      .nullish(),
-    group_master: z.object({}).nullish(),
-    profile_picture: z.string().url().nullish(),
+      .optional(),
+    group_master: z.object({}).optional(),
+    profile_picture: z.string().url().optional(),
     social_employee_profile: z
       .object({
-        social_employee_profile_id: z.number().nullish(),
+        social_employee_profile_id: z.number().optional(),
       })
-      .nullish(),
-    position_name: z.string().nullish(),
+      .optional(),
+    position_name: z.string().optional(),
   }),
   is_first_time_login: z.boolean(),
   expire_token: z.number(),
   vendor: z
     .object({
-      vendor_member_id: z.number().nullish(),
-      vendor_id: z.number().nullish(),
-      photo_profile: z.string().nullish(),
-      name: z.string().nullish(),
+      vendor_member_id: z.number().optional(),
+      vendor_id: z.number().optional(),
+      photo_profile: z.string().optional(),
+      name: z.string().optional(),
     })
-    .nullish(),
+    .optional(),
   subcon: z
     .object({
-      subcon_member_id: z.number().nullish(),
-      subcon_id: z.number().nullish(),
-      photo_profile: z.string().nullish(),
-      name: z.string().nullish(),
+      subcon_member_id: z.number().optional(),
+      subcon_id: z.number().optional(),
+      photo_profile: z.string().optional(),
+      name: z.string().optional(),
     })
-    .nullish(),
+    .optional(),
 });
 
 export type UserCookieType = z.infer<typeof userCookieSchema>;
