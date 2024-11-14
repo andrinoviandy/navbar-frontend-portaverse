@@ -8,50 +8,50 @@ export const userCookieSchema = z.object({
   group_corpu_admin: z
     .array(
       z.object({
-        wallet_group_corpu_id: z.number().nullable(),
-        name: z.string().nullable(),
-        employee_id: z.number(),
+        wallet_group_corpu_id: z.number().nullish(),
+        name: z.string().nullish(),
+        employee_id: z.number().nullish(),
       })
     )
-    .optional(),
+    .nullish(),
   employee: z.object({
-    employee_id: z.number(),
-    employee_number: z.string().optional(),
-    is_official_account: z.boolean().optional(),
-    name: z.union([z.string(), z.null()]).optional(),
+    employee_id: z.number().nullish(),
+    employee_number: z.string().nullish(),
+    is_official_account: z.boolean().nullish(),
+    name: z.union([z.string(), z.null()]).nullish(),
     group: z
       .object({
-        group_id: z.number().optional(),
-        name: z.string().optional(),
+        group_id: z.number().nullish(),
+        name: z.string().nullish(),
       })
-      .optional(),
-    group_master: z.object({}).optional(),
-    profile_picture: z.string().url().optional(),
+      .nullish(),
+    group_master: z.object({}).nullish(),
+    profile_picture: z.string().url().nullish(),
     social_employee_profile: z
       .object({
-        social_employee_profile_id: z.number().optional(),
+        social_employee_profile_id: z.number().nullish(),
       })
-      .optional(),
-    position_name: z.string().optional(),
+      .nullish(),
+    position_name: z.string().nullish(),
   }),
   is_first_time_login: z.boolean(),
   expire_token: z.number(),
   vendor: z
     .object({
-      vendor_member_id: z.number().optional(),
-      vendor_id: z.number().optional(),
-      photo_profile: z.string().optional(),
-      name: z.string().optional(),
+      vendor_member_id: z.number().nullish(),
+      vendor_id: z.number().nullish(),
+      photo_profile: z.string().nullish(),
+      name: z.string().nullish(),
     })
-    .optional(),
+    .nullish(),
   subcon: z
     .object({
-      subcon_member_id: z.number().optional(),
-      subcon_id: z.number().optional(),
-      photo_profile: z.string().optional(),
-      name: z.string().optional(),
+      subcon_member_id: z.number().nullish(),
+      subcon_id: z.number().nullish(),
+      photo_profile: z.string().nullish(),
+      name: z.string().nullish(),
     })
-    .optional(),
+    .nullish(),
 });
 
 export type UserCookieType = z.infer<typeof userCookieSchema>;
