@@ -53,13 +53,6 @@ function SearchBar() {
         )
       }
       data={transformedData || []}
-      // data={
-      //   data?.data.map((item) => ({
-      //     label: item.display,
-      //     value: item.id.toString(),
-      //     data: item,
-      //   })) || []
-      // }
       renderOption={SelectItem}
     />
   );
