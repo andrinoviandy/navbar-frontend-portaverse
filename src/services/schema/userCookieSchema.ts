@@ -8,9 +8,9 @@ export const userCookieSchema = z.object({
   group_corpu_admin: z
     .array(
       z.object({
-        wallet_group_corpu_id: z.number().nullable(),
-        name: z.string().nullable(),
-        employee_id: z.number(),
+        wallet_group_corpu_id: z.number().nullish(),
+        name: z.string().nullish(),
+        employee_id: z.number().nullish(),
       })
     )
     .optional(),
@@ -21,8 +21,8 @@ export const userCookieSchema = z.object({
     name: z.union([z.string(), z.null()]).optional(),
     group: z
       .object({
-        group_id: z.number().optional(),
-        name: z.string().optional(),
+        group_id: z.number().nullish(),
+        name: z.string().nullish(),
       })
       .optional(),
     group_master: z.object({}).optional(),

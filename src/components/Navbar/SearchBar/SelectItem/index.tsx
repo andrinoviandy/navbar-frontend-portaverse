@@ -32,6 +32,8 @@ const mapGroup = {
         employeeNumber={data.describe.nipp}
       />
     ),
+    href: (data: Socmed) =>
+      `${import.meta.env.VITE_KMS_URL}/home/detail/${data.id}`,
   },
   employee: {
     group: 'Pegawai',
@@ -45,23 +47,33 @@ const mapGroup = {
         positionName={data.describe.position}
       />
     ),
+    href: (data: Employee) =>
+      `${import.meta.env.VITE_TMS_URL}/employees/detail/${
+        data.id
+      }/personal-data`,
   },
   post: {
     group: 'Post',
     render: (data: Post) => <PostTypeItem data={data} />,
+    href: (data: Post) =>
+      `${import.meta.env.VITE_KMS_URL}/home?post=${data.id}`,
   },
   survey: {
     group: 'Survey',
     render: (data: Survey) => <PostTypeItem data={data} />,
+    href: (data: Post) =>
+      `${import.meta.env.VITE_KMS_URL}/home?post=${data.id}`,
   },
   document: {
     group: 'Dokumen',
     render: (data: Document) => <DocumentTypeItem data={data} />,
-    href: '/document',
+    href: (data: Document) => `${data.describe.link_file}`,
   },
   course: {
     group: 'Kursus',
     render: (data: Course) => <CourseTypeItem data={data} />,
+    href: (data: Course) =>
+      `${import.meta.env.VITE_LMS_URL}/explore/${data.id}`,
   },
   trainer: {
     group: 'Trainer',
@@ -90,10 +102,25 @@ const SelectItem: SelectProps['renderOption'] = ({ option }) => {
     return null;
   }, [typedOption]);
 
+  const href = useMemo(() => {
+    if (typedOption.data?.type === 'socmed')
+      return mapGroup.socmed?.href(typedOption.data as Socmed);
+    if (typedOption.data?.type === 'employee')
+      return mapGroup.employee?.href(typedOption.data as Employee);
+    if (typedOption.data?.type === 'post')
+      return mapGroup.post?.href(typedOption.data as Post);
+    if (typedOption.data?.type === 'document')
+      return mapGroup.document?.href(typedOption.data as Document);
+    if (typedOption.data?.type === 'course')
+      return mapGroup.course?.href(typedOption.data as Course);
+    return '';
+  }, [typedOption]);
+
   return (
     <Anchor
       rel="noopener noreferrer"
-      className="no-underline hover:no-underline"
+      className="w-full no-underline hover:no-underline"
+      href={href}
     >
       {renderItem}
     </Anchor>
