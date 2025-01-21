@@ -1,9 +1,20 @@
 import { z } from 'zod';
 
+const emailRegex =
+  /^(?!\.)(?!.*\.\.)([A-Z0-9_'+-\.]*)[A-Z0-9_'+-]@([A-Z0-9][A-Z0-9\-]*\.)+[A-Z]{2,}$/i;
+
 export const userCookieSchema = z.object({
   user_id: z.number(),
   uid: z.string(),
-  email: z.string().email(),
+  email: z.string().superRefine((data, ctx) => {
+    if (!emailRegex.test(data)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.invalid_string,
+        message: 'Invalid email address',
+        validation: 'email',
+      });
+    }
+  }),
   role_code: z.array(z.union([z.string(), z.null()])),
   group_corpu_admin: z
     .array(
