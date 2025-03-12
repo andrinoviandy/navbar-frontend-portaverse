@@ -23,7 +23,7 @@ const HELP_CENTER_MENU: HelpCenterMenuProps[] = [
     Silahkan kontak Porta via Whatsapp`,
     icon: 'fluent:call-24-filled',
     route:
-      'https://api.whatsapp.com/send/?phone=%2B6281911111375&text&type=phone_number&app_absent=0',
+      'https://api.whatsapp.com/send/?phone=%2B628113117698&text&type=phone_number&app_absent=0',
   },
 ];
 
