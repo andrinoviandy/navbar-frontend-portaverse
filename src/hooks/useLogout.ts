@@ -17,8 +17,8 @@ export default function useLogout(): {
 
   const { mutate: logout } = mutation('post', {
     onSuccess: () => {
-      // window.location.href = import.meta.env.VITE_SSO_URL as string;
-      window.location.href = "http://localhost:3000";
+      window.location.href = import.meta.env.VITE_SSO_URL as string;
+      // window.location.href = "http://localhost:3000";
       setIsLoading(false);
     },
     onError: () => {
@@ -27,8 +27,8 @@ export default function useLogout(): {
   });
 
   const logoutSso = async () => {
-    const refreshToken = Cookies.get("refreshTokenSso")
-    const idToken = Cookies.get("idTokenSso")
+    const refreshToken = localStorage.getItem("refreshTokenSso")
+    const idToken = localStorage.getItem("idTokenSso")
     if (idToken) {
       const tokenUrl = `https://keycloak-qa.ilcs.co.id/realms/pelindo/protocol/openid-connect/logout`;
       const params = new URLSearchParams();
@@ -44,18 +44,18 @@ export default function useLogout(): {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: params.toString(),
       });
-      Cookies.remove("accessTokenSso")
-      Cookies.remove("idTokenSso")
+      localStorage.removeItem("accessTokenSso")
+      localStorage.removeItem("idTokenSso")
       Cookies.remove("refreshToken")
-      Cookies.remove("refreshTokenSso")
+      localStorage.removeItem("refreshTokenSso")
       Cookies.remove("smartkmsystemAuthClient")
-      Cookies.remove("session_id")
+      localStorage.removeItem("session_id")
     }
   }
 
   const handleLogout = useCallback(() => {
     setIsLoading(true);
-    if (Cookies.get("refreshTokenSso") || Cookies.get("idTokenSso")) {
+    if (localStorage.getItem("refreshTokenSso") || localStorage.getItem("idTokenSso")) {
       logoutSso()
     }
     logout({
