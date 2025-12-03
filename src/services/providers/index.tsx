@@ -19,7 +19,7 @@ function Provider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      window.location.href = `${import.meta.env.VITE_SSO_URL}/login`;
+      window.location.href = `${import.meta.env.VITE_SSO_URL}`;
     }
   }, [isAuthenticated]);
 
