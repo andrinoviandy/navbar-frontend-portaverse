@@ -30,10 +30,10 @@ export default function useLogout(): {
     const refreshToken = localStorage.getItem("refreshTokenSso")
     const idToken = localStorage.getItem("idTokenSso")
     if (idToken) {
-      const tokenUrl = `https://keycloak-qa.ilcs.co.id/realms/pelindo/protocol/openid-connect/logout`;
+      const tokenUrl = `${import.meta.env.VITE_KEYCLOAK_ISSUER}/protocol/openid-connect/logout`;
       const params = new URLSearchParams();
 
-      params.append("client_id", "portaverse-web-local");
+      params.append("client_id", import.meta.env.VITE_KEYCLOAK_CLIENT_ID);
       params.append("client_secret", "");
       // if (CLIENT_SECRET) params.append("client_secret", CLIENT_SECRET);
       if (refreshToken) params.append("refresh_token", refreshToken);
